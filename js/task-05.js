@@ -5,13 +5,11 @@ const nameOutput = document.getElementById("name-output");
 
 inputForm.addEventListener("input", insertName);
 
-console.dir(inputForm)
-
 function insertName(event){
     const value = event.target.value;
-    if(value==="") {
-        nameOutput.textContent = 'Anonymous'
-    } else {
+    if(value.trim() !== "") {                               //trim - не зараховує пробіли
         nameOutput.textContent = value;
+    } else {
+        nameOutput.textContent = 'Anonymous'
     }
 }

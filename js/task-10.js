@@ -30,22 +30,27 @@ const boxes = document.getElementById("boxes");
 
 function createBoxes(amount) {
   const baseSize = 30;
-  const fragment = document.createDocumentFragment();
+  const newBoxes = [];
 
   for (let i = 0; i < amount; i++) {
     const size = baseSize + i * 10;
     const div = document.createElement('div');
-    div.style.width = `${size}px`;
-    div.style.height = `${size}px`;
-    div.style.backgroundColor = getRandomHexColor();
-    fragment.appendChild(div);
+    // div.style.width = `${size}px`;
+    // div.style.height = `${size}px`;
+    // div.style.backgroundColor = getRandomHexColor(); 
+    div.style.cssText = `
+                        width: ${size}px; 
+                        height: ${size}px; 
+                        background-color: ${getRandomHexColor()}`;
+    newBoxes.push(div);
   }
 
-  boxes.appendChild(fragment);
+  boxes.append(...newBoxes);
 }
 
 function destroyBoxes() {
   boxes.innerHTML = '';
+  inputForm.value = '';
 }
 
 function getRandomHexColor() {
@@ -56,11 +61,12 @@ function getRandomHexColor() {
 
 createBtn.addEventListener('click', () => {
   const amount = parseInt(inputForm.value);
-  createBoxes(amount);
+  if (amount >= 1 && amount <= 100) {
+    createBoxes(amount);
+  } else {
+    alert("Value isn't valid");
+    destroyBoxes();
+  }
 });
 
 destroyBtn.addEventListener('click', destroyBoxes);
-
-
-
-

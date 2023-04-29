@@ -12,8 +12,9 @@ const categories = document.getElementById("categories");
 console.log(`Number of categories: ${categoryItem.length}`);
 
 categoryItem.forEach((category) => {
-  const categoryTitle = category.querySelector('h2').textContent;
-  const categoryItemsCount = category.querySelectorAll('li').length;
+   
+  const categoryTitle = category.firstElementChild.textContent;
+  const categoryItemsCount = category.lastElementChild.children.length; //зветраюсь до останнього елеманта ul та потім до його дітей li
   console.log(`Category: ${categoryTitle}`);
   console.log(`Elements: ${categoryItemsCount}`);
 });

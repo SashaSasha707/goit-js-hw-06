@@ -32,7 +32,6 @@ const images = [
 */
 
 const imagesList = document.querySelector(".gallery");
-imagesList.style.display = "flex";
 
 const imageContent = images
                       .map((image) => `<li> <img src="${image.url}" alt="${image.alt}" width = 200 </li>`)
@@ -42,8 +41,9 @@ const imageContent = images
 //   accImg + `<li> <img src="${image.url}" alt="${image.alt}"/> </li>`, ''
 // );
 
-const imageItem = `<ul>${imageContent}</ul>`
-document.body.insertAdjacentHTML("beforeend", imageItem);
+imagesList.style.listStyleType = "none";
+
+imagesList.insertAdjacentHTML("afterbegin", imageContent);
 
 console.dir(imagesList);
 

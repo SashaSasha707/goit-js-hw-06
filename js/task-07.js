@@ -15,9 +15,12 @@
 const inputRange = document.getElementById("font-size-control");
 const inputSpan = document.getElementById("text");
 
+inputSpan.style.fontSize = `${inputRange.value}px`; //приводимо до значення px 
+
 inputRange.addEventListener("input", rangeText);
 
-function rangeText(addEventListener){
+function rangeText(event){
+    
     const fontSize = event.target.value;
     inputSpan.style.fontSize = `${fontSize}px`
 }

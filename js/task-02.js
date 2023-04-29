@@ -14,14 +14,15 @@ const ingredients = [
   'Condiments',
 ];
 
-const ulIng = document.getElementById("ingredients");
-for (const ingredient of ingredients) {
-  const liIng = document.createElement("li");
-  liIng.textContent = ingredient;
-  liIng.classList.add("item");
-  ulIng.appendChild(liIng); 
-};
+const ingredientsUL = document.getElementById("ingredients");
+const ingredientsItem = ingredients.map((ingredient) => {
+  const ingridientLi = document.createElement("li");
+  ingridientLi.textContent = ingredient;
+  ingridientLi.classList.add("item");
+  return ingridientLi;
+})
 
-document.body.prepend(ulIng);
 
-console.log(ulIng);
+ingredientsUL.append(...ingredientsItem);
+
+console.log(ingredientsUL);

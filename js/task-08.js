@@ -39,24 +39,16 @@
   function checkValidity (event){
     event.preventDefault();
 
-    const formElements = loginForm.elements;
-    const formData = [];
+    const { email, password } = loginForm.elements;
     let isFormValid = true;
 
-    for (const formElement of formElements) {
-      if (formElement.type !== "submit") {
-        if (formElement.value === "") {
-          isFormValid = false;
-          alert("Fill in all fields");
-          break;
-        } else {
-          formData[formElement.name] = formElement.value;
-        }
-      }
+    if (email.value.trim() === "" || password.value.trim() === "") {
+      isFormValid = false;
+      alert ("Fill in all fields");
+    } else {
+      console.log(`Email: ${email.value}; 
+      Password: ${password.value}`);
+      // console.log(`Password: ${password.value}`)
     }
-  
-    if (isFormValid) {
-      console.log(formData);
-      loginForm.reset();
-    }
+    loginForm.reset();
   }

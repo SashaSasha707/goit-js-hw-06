@@ -13,18 +13,19 @@
 
 
 const inputField = document.getElementById("validation-input");
+const length = inputField.getAttribute("data-length"); //отримуємо довжину
 
 inputField.addEventListener("blur", inptLength);
 
   function inptLength() {
-    const value = inputField.value; //отримуємо текст
-    const length = inputField.getAttribute("data-length"); //отримуємо довжину
+    const value = inputField.value.trim(); //отримуємо текст
     
-    if (value.length <= Number(length)) {
-      inputField.classList.add("invalid");
-      inputField.classList.remove("valid");
-    } else {
+    if (value.length === Number(length)) {
       inputField.classList.add("valid");
       inputField.classList.remove("invalid");
+    } else {
+      inputField.classList.add("invalid");
+      inputField.classList.remove("valid");
     }
-  }
+  };
+

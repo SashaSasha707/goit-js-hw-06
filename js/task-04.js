@@ -12,30 +12,25 @@
 
 const decrementBtn = document.querySelector('button[data-action="decrement"]');
 const incrementtBtn = document.querySelector('button[data-action="increment"]');
+const counterValue = document.getElementById("value");
 
 console.log(decrementBtn.dataset.action);
 
-/*Алговритм
-1. Стоврити зміну counterValue
-2. Створити події на кнопки та додати до них функцію оновлення інтерфейсу
-3. Стоврити функцію оновлення
-*/
-
-let counterValue = 0;
+let value = 0;
 
 decrementBtn.addEventListener("click", () =>{
-  counterValue --;
-
-  updateValue();
+  value --;
+  
+  counterValue.textContent = value;
+  // updateValue ();
 });
 
 incrementtBtn.addEventListener("click", () =>{
-  counterValue ++;
-
-  updateValue();
+  value ++;
+  counterValue.textContent = value;
+  // updateValue ();
 });
 
-function updateValue (){
-  const count = document.getElementById("value");
-  count.innerText = counterValue.toString();
-}
+// function updateValue (){
+//   counterValue.textContent = value;
+// }
